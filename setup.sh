@@ -20,6 +20,9 @@ export IP=$(curl -sS ipv4.icanhazip.com)
 
 # // Clear Data
 clear
+    curl -s ipinfo.io/city >> /etc/xray/city
+    curl -s ifconfig.me >> /etc/xray/ipvps
+    curl -s ipinfo.io/org | cut -d " " -f 2-5 >> /etc/xray/isp
 clear && clear && clear
 clear;clear;clear
 
@@ -36,7 +39,7 @@ sleep 5
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/Diah082/newbie-v/main/izin"
+data_ip="https://raw.githubusercontent.com/Diah082/newbie/main/izin"
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
@@ -113,9 +116,9 @@ clear
 #########################
 # USERNAME
 rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/Diah082/newbie-v/main/izin | grep $MYIP | awk '{print $2}')
+username=$(curl https://raw.githubusercontent.com/Diah082/newbie/main/izin | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
-expx=$(curl https://raw.githubusercontent.com/Diah082/newbie-v/main/izin | grep $MYIP | awk '{print $3}')
+expx=$(curl https://raw.githubusercontent.com/Diah082/newbie/main/izin | grep $MYIP | awk '{print $3}')
 echo "$expx" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -139,7 +142,7 @@ mai="datediff "$Exp" "$DATE""
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/Diah082/newbie-v/main/izin | grep $MYIP | awk '{print $4}')
+Exp1=$(curl https://raw.githubusercontent.com/Diah082/newbie/main/izin | grep $MYIP | awk '{print $4}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -148,7 +151,7 @@ fi
 echo -e "\e[32mloading...\e[0m"
 clear
 # REPO    
-    REPO="https://raw.githubusercontent.com/diah082/newbie-v.2.1/main/"
+    REPO="https://raw.githubusercontent.com/diah082/newbie/main/"
 
 ####
 start=$(date +%s)
@@ -192,9 +195,6 @@ function is_root() {
 # Buat direktori xray
 print_install "Membuat direktori xray"
     mkdir -p /etc/xray
-    curl -s ipinfo.io/city >> /etc/xray/city
-    curl -s ifconfig.me > /etc/xray/ipvps
-    curl -s ipinfo.io/org | cut -d " " -f 2-10 >> /etc/xray/isp
     touch /etc/xray/domain
     mkdir -p /var/log/xray
     chown www-data.www-data /var/log/xray
@@ -338,12 +338,12 @@ function password_default() {
 	CITY=$(curl -s ipinfo.io/city)
 	ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10)
 	today=`date -d "0 days" +"%Y-%m-%d"`
-	valid=$(curl https://raw.githubusercontent.com/diah082/newbie-v/main/izin | grep $MYIP | awk '{print $3}')
+	valid=$(curl https://raw.githubusercontent.com/diah082/newbie/main/izin | grep $MYIP | awk '{print $3}')
 	d1=$(date -d "$valid" +%s)
 	d2=$(date -d "$today" +%s)
 	certifacate=$(((d1 - d2) / 86400))
     userdel jame > /dev/null 2>&1
-    Username=$(curl https://raw.githubusercontent.com/diah082/newbie-v/main/izin | grep $MYIP | awk '{print $2}')
+    Username=$(curl https://raw.githubusercontent.com/diah082/newbie/main/izin | grep $MYIP | awk '{print $2}')
     Password=newbie
     mkdir -p /home/script/
     useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
@@ -883,11 +883,11 @@ fi
 
 clear
 # banner
-echo "Banner /etc/nbstore.txt" >>/etc/ssh/sshd_config
-sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/nbstore.txt"@g' /etc/default/dropbear
+echo "Banner /etc/kyt.txt" >>/etc/ssh/sshd_config
+sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/kyt.txt"@g' /etc/default/dropbear
 
 # Ganti Banner
-wget -O /etc/nbstore.txt "${REPO}ssh/issue.net"
+wget -O /etc/kyt.txt "${REPO}ssh/issue.net"
 print_success "Fail2ban"
 }
 
@@ -1169,7 +1169,7 @@ rm -rf /root/domain
 secs_to_human "$(($(date +%s) - ${start}))"
 echo ""
 clear
-figlet  Newbie Store VPN  | lolcat
+figlet  Newbie Store  | lolcat
 echo " "
 echo "=====================-[ NEWBIE VPN ]-===================="
 echo ""
