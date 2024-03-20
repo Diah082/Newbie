@@ -3,7 +3,7 @@
 </p>
 
 ### INSTALL SCRIPT 
-<pre><code>apt install -y wget screen && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/Diah082/Newbie/main/setup.sh && chmod +x setup.sh && screen -S install ./setup.sh
+<pre><code>apt install -y wget screen && apt install curl -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/Diah082/Newbie/main/setup.sh && chmod +x setup.sh && screen -S install ./setup.sh
 </code></pre>
 
 ### PERINTAH UPDATE 
