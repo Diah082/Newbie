@@ -20,9 +20,6 @@ export IP=$(curl -sS ipv4.icanhazip.com)
 
 # // Clear Data
 clear
-    curl -s ipinfo.io/city >> /etc/xray/city
-    curl -s ifconfig.me >> /etc/xray/ipvps
-    curl -s ipinfo.io/org | cut -d " " -f 2-5 >> /etc/xray/isp
 clear && clear && clear
 clear;clear;clear
 
@@ -195,6 +192,9 @@ function is_root() {
 # Buat direktori xray
 print_install "Membuat direktori xray"
     mkdir -p /etc/xray
+    curl -s ipinfo.io/city >> /etc/xray/city
+    curl -s ifconfig.me >> /etc/xray/ipvps
+    curl -s ipinfo.io/org | cut -d " " -f 2-5 >> /etc/xray/isp
     touch /etc/xray/domain
     mkdir -p /var/log/xray
     chown www-data.www-data /var/log/xray
@@ -590,74 +590,6 @@ cd /usr/bin
 sed -i 's/\r//' limit-ip
 cd
 clear
-#SERVICE LIMIT ALL IP
-cat >/etc/systemd/system/sship.service << EOF
-[Unit]
-Description=My
-ProjectAfter=network.target
-
-[Service]
-WorkingDirectory=/root
-ExecStart=/usr/bin/limit-ip-ssh
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl daemon-reload
-systemctl restart sship
-systemctl enable sship
-
-cat >/etc/systemd/system/vmip.service << EOF
-[Unit]
-Description=My
-ProjectAfter=network.target
-
-[Service]
-WorkingDirectory=/root
-ExecStart=/usr/bin/limit-ip vmip
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl daemon-reload
-systemctl restart vmip
-systemctl enable vmip
-
-cat >/etc/systemd/system/vlip.service << EOF
-[Unit]
-Description=My
-ProjectAfter=network.target
-
-[Service]
-WorkingDirectory=/root
-ExecStart=/usr/bin/limit-ip vlip
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl daemon-reload
-systemctl restart vlip
-systemctl enable vlip
-
-cat >/etc/systemd/system/trip.service << EOF
-[Unit]
-Description=My
-ProjectAfter=network.target
-
-[Service]
-WorkingDirectory=/root
-ExecStart=/usr/bin/limit-ip trip
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl daemon-reload
-systemctl restart trip
-systemctl enable trip
 #SERVICE LIMIT QUOTA
 
 #SERVICE VMESS
@@ -961,7 +893,7 @@ Description=UDP Custom by ePro Dev. Team
 [Service]
 User=root
 Type=simple
-ExecStart=/root/udp/udp-custom
+ExecStart=/root/udp/udp-custom server
 WorkingDirectory=/root/udp/
 Restart=always
 RestartSec=2s
@@ -1052,6 +984,21 @@ fi
 mesg n || true
 menu
 EOF
+cat >/etc/cron.d/log_clear <<-END
+		59 * * * * root /usr/local/bin/log_clear
+	END
+	chmod +x /etc/cron.d/log_clear
+
+cat >/usr/local/bin/log_clear <<-END
+	#!/bin/bash
+tanggal=$(date +"%m-%d-%Y")
+waktu=$(date +"%T")
+echo "Sucsesfully clear & restart On $tanggal Time $waktu." >> /root/log-clear.txt
+/usr/local/sbin/clearlog -r now
+/usr/local/sbin/clearcache -r now
+systemctl restart udp-custom.service
+END
+	chmod +x /usr/local/bin/log_clear
 
 cat >/etc/cron.d/xp_all <<-END
 		SHELL=/bin/sh
