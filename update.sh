@@ -31,7 +31,7 @@ fun_bar() {
 }
 res1() {
    cd
-    wget -q https://raw.githubusercontent.com/diah082/newbie-v.2.1/main/menu/menu.zip
+    wget -q https://raw.githubusercontent.com/diah082/newbie/main/menu/menu.zip
     unzip menu.zip
     chmod +x menu/*
     mv menu/* /usr/local/sbin
