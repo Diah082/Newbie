@@ -32,7 +32,7 @@ fun_bar() {
 res1() {
 cd
 cat >/etc/cron.d/log_clear <<-END
-		59 * * * * root /usr/local/bin/log_clear
+		10 */12 * * * root /usr/local/bin/log_clear
 	END
 	chmod +x /etc/cron.d/log_clear
 
