@@ -5,7 +5,7 @@
 <pre><code>sudo bash && apt install wget -y && rm -f gasss-root.sh && apt install wget whois -y && wget https://raw.githubusercontent.com/maintebot/change-root/main/gasss-root.sh && chmod +x gasss-root.sh && ./gasss-root.sh && rm gasss-root.sh</code></pre>
 
 ### INSTALL SCRIPT 
-<pre><code>wget -q https://raw.githubusercontent.com/Diah082/Newbie/main/setup.sh && chmod +x setup.sh && screen -S install ./setup.sh
+<pre><code>wget -q https://raw.githubusercontent.com/Diah082/Newbie/main/setup.sh && chmod +x setup.sh && ./setup.sh
 </code></pre>
 
 ### PERINTAH UPDATE 
