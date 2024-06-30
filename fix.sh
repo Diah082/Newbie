@@ -1,5 +1,5 @@
 #!/bin/bash
-wget -q https://raw.githubusercontent.com/sabdo-dadi/premium/main/Cfg/rclone.conf
+wget -q https://raw.githubusercontent.com/diah082/newbie/main/Cfg/rclone.conf
 mv rclone.conf /root/.config/rclone/rclone.conf
 clear
 echo -e "RCLONE BERHASIL DIUPDATE" | lolcat
