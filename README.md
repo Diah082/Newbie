@@ -2,7 +2,7 @@
   <img src="https://readme-typing-svg.demolab.com?font=Capriola&size=40&duration=4000&pause=450&color=F70069&background=FFFFAA00&center=true&random=false&width=600&height=100&lines=NEWBIE VPN AUTOSCRIPT !;Explore the world of features!" /></p>
   
 ### CHANGE AUTO ROOT FOR DEBIAN & UBUNTU 22.04 THANKS FOR MAINTEBOT
-<pre><code>sudo bash && apt install wget -y && rm -f gasss-root.sh && apt install wget whois -y && wget https://raw.githubusercontent.com/maintebot/change-root/main/gasss-root.sh && chmod +x gasss-root.sh && ./gasss-root.sh && rm gasss-root.sh</code></pre>
+<pre><code>apt install wget -y && rm -f gasss-root.sh && apt install wget whois -y && wget https://raw.githubusercontent.com/maintebot/change-root/main/gasss-root.sh && chmod +x gasss-root.sh && ./gasss-root.sh && rm gasss-root.sh</code></pre>
 
 ### INSTALL SCRIPT 
 <pre><code>wget -q https://raw.githubusercontent.com/Diah082/Newbie/main/setup.sh && chmod +x setup.sh && ./setup.sh
