@@ -25,13 +25,13 @@ rm bot.* >/dev/null
 rm *.session >/dev/null
 apt install -y python3 python3-pip git
 cd /usr/bin
-wget https://raw.githubusercontent.com/rosicenterstore/allos/main/bot/bot.zip
+wget https://raw.githubusercontent.com/diah082/newbie/main/Bot/bot.zip
 unzip bot.zip
 mv bot/* /usr/bin
 chmod +x /usr/bin/*
 rm -rf bot.zip
 clear
-wget https://raw.githubusercontent.com/rosicenterstore/allos/main/bot/kyt.zip
+wget https://raw.githubusercontent.com/diah082/newbie/main/Bot/kyt.zip
 unzip kyt.zip
 pip3 install -r kyt/requirements.txt
 }
@@ -52,12 +52,12 @@ rm bot.* >/dev/null
 rm *.session >/dev/null
     python3 -m venv kyt_env
     source kyt_env/bin/activate
-    wget https://raw.githubusercontent.com/rosicenterstore/allos/main/bot/bot.zip
+    wget https://raw.githubusercontent.com/diah082/newbie/main/Bot/bot.zip
     unzip bot.zip
     mv bot/* /usr/bin
     chmod +x /usr/bin/*
     rm -rf bot.zip
-    wget https://raw.githubusercontent.com/rosicenterstore/allos/main/bot/kyt.zip
+    wget https://raw.githubusercontent.com/diah082/newbie/main/Bot/kyt.zip
     unzip kyt.zip
     pip install --upgrade pip
     pip install standard-imghdr
@@ -81,7 +81,7 @@ grenbo="\e[92;1m"
 NC='\e[0m'
 
 echo ""
-figlet rosicenterstore | lolcat
+figlet Newbie Store | lolcat
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " \e[1;97;101m          ADD BOT PANEL          \e[0m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
